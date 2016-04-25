@@ -43,6 +43,37 @@ app.get('/delphidata', function (req, res) {
   // for each gender. 
   // Display that data using D3 with gender on the x-axis and 
   // total respondents on the y-axis.
+
+   pg.connect(conString, function(err, client, done) {
+
+    if(err) {
+    return console.error('error fetching client from pool', err);
+    }
+
+
+    var myQuerry = 'SELECT gender, SUM(number_of_respondents) AS sum \
+      FROM cogs121_16_raw.cdph_smoking_prevalence_in_adults_1984_2013 t \
+      WHERE t.year = 2003 \
+      GROUP BY t.gender \
+      ORDER BY sum ASC';
+
+    client.query(myQuerry , function(err, result) {
+    //call `done()` to release the client back to the pool
+      done();
+
+      if(err) {
+        return console.error('error running query', err);
+      }
+
+      //json
+      res.json(result.rows);
+      client.end();
+
+      return { delphidata: result };
+    });
+  });
+
+
   return { delphidata: "No data present." }
 });
 
