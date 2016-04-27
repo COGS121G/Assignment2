@@ -26,10 +26,7 @@
   // TODO: Input the proper values for the scales
   var xScale = d3.scale.ordinal().rangeRoundBands([0, width], .1);
   var yScale = d3.scale.linear().range([height, 0]);
-<<<<<<< HEAD
-=======
 
->>>>>>> f403e6ecd4fa62f675f56c13ddf2f6347d870224
   // Define the chart
   var chart = d3
                 .select(".chart")
@@ -46,15 +43,9 @@
   yScale.domain([0, d3.max(data, function(d) {
         return d.rating;
     })]);
-<<<<<<< HEAD
-
-
-  //console.log("the data is: " + data[1].rating);
-=======
-
 
   console.log("the data is: " + data[1].rating);
->>>>>>> f403e6ecd4fa62f675f56c13ddf2f6347d870224
+
   // Note all these values are hard coded numbers
   // TODO:
   // 1. Consume the taco data
@@ -73,8 +64,6 @@
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
   var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-<<<<<<< HEAD
-
 
    // TODO: Append X axis
   chart
@@ -87,21 +76,8 @@
             .attr("dy", ".15em")
             .attr("transform", "rotate(-65)" );
 
-            // TODO: Append Y axis
-=======
-  // TODO: Append X axis
-  chart
-        .append("g").attr("class", "x axis")
-        .call(xAxis)
-        .attr("transform", "translate(0," + height + ")")
-        .selectAll("text")  
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", "rotate(-65)" );
-
+  
   // TODO: Append Y axis
->>>>>>> f403e6ecd4fa62f675f56c13ddf2f6347d870224
   chart.append("g")
         .attr("class", "y axis")
         .call(yAxis);
