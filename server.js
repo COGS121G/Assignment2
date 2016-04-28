@@ -54,7 +54,7 @@ app.get('/delphidata', function (req, res) {
     FROM cogs121_16_raw.arjis_crimes t \
     GROUP BY community \
     ORDER BY community_occurence DESC \
-    LIMIT 100;'
+    LIMIT 10;'
 
     console.log("sql");
     /*
