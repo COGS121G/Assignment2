@@ -50,10 +50,16 @@ app.get('/delphidata', function (req, res) {
     return console.error('error fetching client from pool', err);
     }
 
+    var sanDiego = "'%IEG%'";
+    var vista = "'%IST%'";
+    var elC = "'%AJO%'";
+    var nulll ="''";
+
     var myQuerry = 'SELECT community, COUNT(community) AS community_occurence \
     FROM cogs121_16_raw.arjis_crimes t \
+    WHERE t.community NOT LIKE'+ nulll+'\
     GROUP BY community \
-    HAVING count(community)>=100 \
+    HAVING count(community)>=120 \
     ORDER BY community_occurence DESC \
     LIMIT 10;'
 
