@@ -27,10 +27,15 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
   var innerWidth  = width  - margin.left - margin.right;
 
   var rating = d3.max( data.map(function(d){ return d.community_occurence; }) );
+<<<<<<< Updated upstream
   var innerHeight = rating/2 - margin.top  - margin.bottom;
+=======
+  console.log("rating is: "+ rating);
+  var innerHeight = rating - margin.top  - margin.bottom;
+>>>>>>> Stashed changes
 
 
-  var xScale = d3.scale.ordinal().rangeRoundBands([0, width], .1);
+  var xScale = d3.scale.ordinal().rangeRoundBands([0, width+50], .1);
   var yScale = d3.scale.linear().range([innerHeight, 0]);
 
   var tip = d3.tip()
@@ -61,13 +66,12 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
 
   var node = chart
     .selectAll(".bar")
-    .data(data.map(function(d){ 
-      return d.community_occurence; }))
+    .data(data.map(function(d){ return d.community_occurence; }))
     .enter().append("rect")
     .attr("class", "bar")
     .attr("x", function(d, i) {
-     return ((innerWidth / data.length)*i) + 30; })
-    .attr("width", xScale.rangeBand())
+     return ((innerWidth / data.length)*i) + 45; })
+    .attr("width", xScale.rangeBand()-5)
     .attr("y", function(d) { 
     return innerHeight - d*(innerHeight/rating); })
     .attr("height", function(d) { return innerHeight*d/rating;  })
