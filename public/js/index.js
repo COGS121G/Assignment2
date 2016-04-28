@@ -31,7 +31,7 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
 
 
 
-  var xScale = d3.scale.ordinal().rangeRoundBands([0, width+50], .1);
+  var xScale = d3.scale.ordinal().rangeRoundBands([0, innerWidth+1], .1);
   var yScale = d3.scale.linear().range([innerHeight, 0]);
 
   var tip = d3.tip()
@@ -84,11 +84,16 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
         .attr("transform", "translate(30," + innerHeight + ")")
         .selectAll("text")  
             .style("text-anchor", "end")
+            .attr("font-size","14px")
+            .attr("dx", "-.8em")
             .attr("dy", ".15em")
-            .attr("transform", "rotate(-85)" );
+            .attr("transform", "rotate(-65)" );
 
 
-            // TODO: Append Y axis
+
+
+
+  // TODO: Append Y axis
   chart.append("g")
         .attr("class", "y axis")
         .call(yAxis)
