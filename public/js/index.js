@@ -18,18 +18,27 @@
 
 
 makeDelphiChart = function(data) {
+
+
+
 var margin = {top: 20, right: 10, bottom: 100, left: 80},
       width = 960 - margin.right - margin.left;
 
   var innerWidth  = width  - margin.left - margin.right;
 
   var rating = d3.max( data.map(function(d){ return d.community_occurence; }) );
-  var innerHeight = rating - margin.top  - margin.bottom;
+  var innerHeight = rating/2 - margin.top  - margin.bottom;
 
 
   var xScale = d3.scale.ordinal().rangeRoundBands([0, width], .1);
   var yScale = d3.scale.linear().range([innerHeight, 0]);
 
+  var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong> Total Crimes :</strong> <span style='color:red'>" + d + "</span>";
+  });
 
   // Define the chart
   var chart = d3
@@ -46,7 +55,11 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
         return rating;
     })]);
 
-  chart
+
+
+  chart.call(tip);
+
+  var node = chart
     .selectAll(".bar")
     .data(data.map(function(d){ 
       return d.community_occurence; }))
@@ -57,8 +70,9 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
     .attr("width", xScale.rangeBand())
     .attr("y", function(d) { 
     return innerHeight - d*(innerHeight/rating); })
-    .attr("height", function(d) { return innerHeight*d/rating;  });
-
+    .attr("height", function(d) { return innerHeight*d/rating;  })
+    .on("mouseover",tip.show)
+    .on("mouseout", tip.hide);
 
   // Orient the x and y axis
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom");

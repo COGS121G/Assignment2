@@ -55,7 +55,7 @@ app.get('/delphidata', function (req, res) {
     GROUP BY community \
     HAVING count(community)>=100 \
     ORDER BY community_occurence DESC \
-    LIMIT 100;'
+    LIMIT 10;'
 
     console.log("sql");
     /*

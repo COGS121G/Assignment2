@@ -8,7 +8,7 @@
   fill: steelblue;
 }
 
-.chart rect:hover {
+.bar:hover {
   fill: orangered ;
 }
 
