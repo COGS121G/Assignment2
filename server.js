@@ -50,12 +50,20 @@ app.get('/delphidata', function (req, res) {
     return console.error('error fetching client from pool', err);
     }
 
+    var myQuerry = 'SELECT community, COUNT(community) AS community_occurence \
+    FROM cogs121_16_raw.arjis_crimes t \
+    GROUP BY community \
+    ORDER BY community_occurence DESC \
+    LIMIT 100;'
 
+    console.log("sql");
+    /*
     var myQuerry = 'SELECT gender, SUM(number_of_respondents) AS sum \
       FROM cogs121_16_raw.cdph_smoking_prevalence_in_adults_1984_2013 t \
       WHERE t.year = 2003 \
       GROUP BY t.gender \
       ORDER BY sum ASC';
+    */
 
     client.query(myQuerry , function(err, result) {
     //call `done()` to release the client back to the pool
