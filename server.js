@@ -55,9 +55,11 @@ app.get('/delphidata', function (req, res) {
     var elC = "'%AJO%'";
     var nulll ="''";
 
-    var myQuerry = 'SELECT community, COUNT(community) AS community_occurence \
+    var myQuerry = 'SELECT DISTINCT community, COUNT(community) AS community_occurence \
     FROM cogs121_16_raw.arjis_crimes t \
-    WHERE t.community NOT LIKE'+ nulll+'\
+    WHERE t.community NOT LIKE'+ nulll+' AND\
+    t.community NOT LIKE'+ sanDiego+' AND \
+    t.community IS NOT NULL \
     GROUP BY community \
     HAVING count(community)>=120 \
     ORDER BY community_occurence DESC \
