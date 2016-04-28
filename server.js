@@ -53,12 +53,11 @@ app.get('/delphidata', function (req, res) {
     var sanDiego = "'%IEG%'";
     var vista = "'%IST%'";
     var elC = "'%AJO%'";
+    var nulll ="''";
 
     var myQuerry = 'SELECT community, COUNT(community) AS community_occurence \
     FROM cogs121_16_raw.arjis_crimes t \
-    WHERE t.community NOT LIKE'+ sanDiego+' AND \
-    t.community NOT LIKE' + vista + ' AND \
-    t.community NOT LIKE' + elC + '  \
+    WHERE t.community NOT LIKE'+ nulll+'\
     GROUP BY community \
     HAVING count(community)>=120 \
     ORDER BY community_occurence DESC \

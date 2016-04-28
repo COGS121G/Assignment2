@@ -27,12 +27,8 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
   var innerWidth  = width  - margin.left - margin.right;
 
   var rating = d3.max( data.map(function(d){ return d.community_occurence; }) );
-<<<<<<< Updated upstream
-  var innerHeight = rating/2 - margin.top  - margin.bottom;
-=======
-  console.log("rating is: "+ rating);
-  var innerHeight = rating - margin.top  - margin.bottom;
->>>>>>> Stashed changes
+  var innerHeight = rating/6 - margin.top  - margin.bottom;
+
 
 
   var xScale = d3.scale.ordinal().rangeRoundBands([0, width+50], .1);
@@ -71,7 +67,7 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
     .attr("class", "bar")
     .attr("x", function(d, i) {
      return ((innerWidth / data.length)*i) + 45; })
-    .attr("width", xScale.rangeBand()-5)
+    .attr("width", xScale.rangeBand()-10)
     .attr("y", function(d) { 
     return innerHeight - d*(innerHeight/rating); })
     .attr("height", function(d) { return innerHeight*d/rating;  })
@@ -88,9 +84,8 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
         .attr("transform", "translate(30," + innerHeight + ")")
         .selectAll("text")  
             .style("text-anchor", "end")
-            .attr("dx", "-1em")
             .attr("dy", ".15em")
-            .attr("transform", "rotate(-65)" );
+            .attr("transform", "rotate(-85)" );
 
 
             // TODO: Append Y axis
