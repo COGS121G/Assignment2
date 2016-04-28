@@ -56,7 +56,6 @@ var margin = {top: 20, right: 10, bottom: 100, left: 80},
      return ((innerWidth / data.length)*i) + 30; })
     .attr("width", xScale.rangeBand())
     .attr("y", function(d) { 
-
     return innerHeight - d*(innerHeight/rating); })
     .attr("height", function(d) { return innerHeight*d/rating;  });
 
