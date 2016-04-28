@@ -53,6 +53,7 @@ app.get('/delphidata', function (req, res) {
     var myQuerry = 'SELECT community, COUNT(community) AS community_occurence \
     FROM cogs121_16_raw.arjis_crimes t \
     GROUP BY community \
+    HAVING count(community)>=100 \
     ORDER BY community_occurence DESC \
     LIMIT 10;'
 
