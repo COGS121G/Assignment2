@@ -20,12 +20,16 @@ The graph is clearly labeled for each axis so the user does not misinterpret the
 
 
 #Justification of design decisions
-Bootstrap theme: We wanted to use a simple yet informative design that had a nice header image (aesthetically pleasing) and Bootstrap has templates for doing so. The Bootstrap theme also came with extra .js files.
+
+Bootstrap theme: We wanted to use a simple yet informative design that had a nice header image (aesthetically pleasing) and Bootstrap has templates for doing so. 
+
+Interactive bar chart (d3 and d3tips): We chose this graph to visualize our data because it was intuitive to understand and easy to compare between the different regions. It also provides an accurate and understandable representation of our data. Police officers can clearly see which areas contain the most crime and can easily compare each of the regions. If a user wants to find more precise information, they can simply hover over each bar. This gives the users more accurate information, but only if they want to see it. 
+
 
 
 
 #Contributions
-Amr: Made the d3 look prettt. Worked on the website.
+Amr: Made the d3 look pretty. Worked on the website.
 Andrew: bootstrap work, heuristics/readme
 David: Finished part 1b and helped people get up to pace with the SQL side of things. Worked on foundation SQL and d3.js here and there--formatting and adding specificity to the querry.
 Jean: Added SQL query and integrated into the bar chart in index.js. Also included added functionality on mouseover. Worked with d3 and SQL
